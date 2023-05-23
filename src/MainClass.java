@@ -6,9 +6,10 @@ public class MainClass {
     private static final String[] colors = {"Red", "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"};
 
     public static void main(String[] args) {
-        //findFirst()
+        //findAny()
+
         Optional<String> first = Arrays.asList(colors).stream()
-                .findAny();
+                .findFirst();
         if (first.isPresent()){
             System.out.println(first.get());
         }else{

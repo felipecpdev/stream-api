@@ -61,6 +61,19 @@ System.out.println(count);
 ```java
  //findFirst()
         Optional<String> first = Arrays.asList(colors).stream()
+            .findFirst();
+        if (first.isPresent()){
+            System.out.println(first.get());
+        }else{
+            System.out.println("Not present");
+        }
+```
+
+### findAny()
+
+```java
+ //findAny()
+        Optional<String> first = Arrays.asList(colors).stream()
                 .findAny();
         if (first.isPresent()){
             System.out.println(first.get());

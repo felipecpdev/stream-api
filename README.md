@@ -112,18 +112,18 @@ System.out.println(count);
 
 ```java
         Predicate<String> isLenghtThreeChars= color-> color.length()==3;
-        boolean colorsLenthEqualthree=Arrays.asList(colors).stream()
+        boolean colorsLengthEqualthree=Arrays.asList(colors).stream()
         .allMatch(isLenghtThreeChars);
-        System.out.println(colorsLenthEqualthree);
+        System.out.println(colorsLengthEqualthree);
 ```
 
 ### anyMatch
 
 ```java
         Predicate<String> isLenghtThreeChars = color -> color.length() == 3;
-        boolean colorsLenthEqualthree = Arrays.asList(colors).stream()
+        boolean colorsLengthEqualthree = Arrays.asList(colors).stream()
                 .anyMatch(isLenghtThreeChars);
-        System.out.println(colorsLenthEqualthree);
+        System.out.println(colorsLengthEqualthree);
 ```
 
 ### noneMatch
@@ -131,7 +131,7 @@ System.out.println(count);
 ```java
         //noneMatch
         Predicate<String> isLenghtThreeChars = color -> color.length() == 1;
-        boolean colorsLenthEqualthree = Arrays.asList(colors).stream()
+        boolean colorsLengthEqualthree = Arrays.asList(colors).stream()
         .noneMatch(isLenghtThreeChars);
-        System.out.println(colorsLenthEqualthree);
+        System.out.println(colorsLengthEqualthree);
 ```

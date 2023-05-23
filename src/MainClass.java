@@ -8,19 +8,11 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //Predicate
-        long count = Arrays.asList(colors).stream()
-                .filter(color -> color.length() == 3)
-                .count();
-
-        System.out.println(count);
+        //allMatch
         Predicate<String> isLenghtThreeChars = color -> color.length() == 3;
-
-        long count1 = Arrays.asList(colors).stream()
-                .filter(isLenghtThreeChars)
-                .count();
-        System.out.println(count1);
-
+        boolean colorsLenthEqualthree = Arrays.asList(colors).stream()
+                .allMatch(isLenghtThreeChars);
+        System.out.println(colorsLenthEqualthree);
 
     }
 }

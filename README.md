@@ -113,6 +113,15 @@ System.out.println(count);
 ```java
         Predicate<String> isLenghtThreeChars= color-> color.length()==3;
         boolean colorsLenthEqualthree=Arrays.asList(colors).stream()
-                .allMatch(isLenghtThreeChars);
+        .allMatch(isLenghtThreeChars);
+        System.out.println(colorsLenthEqualthree);
+```
+
+### anyMatch
+
+```java
+        Predicate<String> isLenghtThreeChars = color -> color.length() == 3;
+        boolean colorsLenthEqualthree = Arrays.asList(colors).stream()
+                .anyMatch(isLenghtThreeChars);
         System.out.println(colorsLenthEqualthree);
 ```

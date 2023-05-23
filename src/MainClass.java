@@ -8,10 +8,10 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //allMatch
+        //anyMatch
         Predicate<String> isLenghtThreeChars = color -> color.length() == 3;
         boolean colorsLenthEqualthree = Arrays.asList(colors).stream()
-                .allMatch(isLenghtThreeChars);
+                .anyMatch(isLenghtThreeChars);
         System.out.println(colorsLenthEqualthree);
 
     }

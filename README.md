@@ -46,3 +46,13 @@ System.out.println(count);
                 .limit(5)
                 .forEach(System.out::println);
 ```
+
+### skip
+
+```java
+//skip()
+        Arrays.asList(colors).stream()
+                .skip(2)
+                .forEach(System.out::println);
+```
+

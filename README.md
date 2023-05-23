@@ -81,3 +81,11 @@ System.out.println(count);
             System.out.println("Not present");
         }
 ```
+
+### Sorted
+```java
+ //sorted
+        Arrays.asList(colors).stream()
+                .sorted()
+                .forEach(System.out::println);
+```

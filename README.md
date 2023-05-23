@@ -56,3 +56,15 @@ System.out.println(count);
                 .forEach(System.out::println);
 ```
 
+### findFirst()
+
+```java
+ //findFirst()
+        Optional<String> first = Arrays.asList(colors).stream()
+                .findAny();
+        if (first.isPresent()){
+            System.out.println(first.get());
+        }else{
+            System.out.println("Not present");
+        }
+```

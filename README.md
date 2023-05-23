@@ -125,3 +125,13 @@ System.out.println(count);
                 .anyMatch(isLenghtThreeChars);
         System.out.println(colorsLenthEqualthree);
 ```
+
+### noneMatch
+
+```java
+        //noneMatch
+        Predicate<String> isLenghtThreeChars = color -> color.length() == 1;
+        boolean colorsLenthEqualthree = Arrays.asList(colors).stream()
+        .noneMatch(isLenghtThreeChars);
+        System.out.println(colorsLenthEqualthree);
+```

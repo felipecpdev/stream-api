@@ -135,3 +135,16 @@ System.out.println(count);
         .noneMatch(isLenghtThreeChars);
         System.out.println(colorsLengthEqualthree);
 ```
+
+#### Example
+
+```java
+//example
+        Predicate<String> containsCharA = color -> !color.contains("a");
+        Predicate<String> lessThanFiveChars = color -> color.length() > 5;
+        Predicate<String> greaterThanFiveCharsAndNotContainsCharA = lessThanFiveChars.and(containsCharA);
+        long count = Arrays.asList(colors).stream()
+                .filter(greaterThanFiveCharsAndNotContainsCharA)
+                .count();
+        System.out.println(count);
+```

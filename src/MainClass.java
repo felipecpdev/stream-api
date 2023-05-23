@@ -8,11 +8,15 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //noneMatch
-        Predicate<String> isLenghtThreeChars = color -> color.length() == 1;
-        boolean colorsLenthEqualthree = Arrays.asList(colors).stream()
-                .noneMatch(isLenghtThreeChars);
-        System.out.println(colorsLenthEqualthree);
+        //example
+        Predicate<String> containsCharA = color -> !color.contains("a");
+        Predicate<String> lessThanFiveChars = color -> color.length() > 5;
+        Predicate<String> greaterThanFiveCharsAndNotContainsCharA = lessThanFiveChars.and(containsCharA);
+        long count = Arrays.asList(colors).stream()
+                .filter(greaterThanFiveCharsAndNotContainsCharA)
+                .count();
+        System.out.println(count);
+
 
     }
 }

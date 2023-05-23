@@ -1,6 +1,10 @@
 # Java 8 Stream API
 
 ## Basic stream operations
+``` Java
+//lista ejemplo
+private static final String[] colors = {"Red", "Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"};
+```
 
 ### Count
 
@@ -29,4 +33,16 @@ System.out.println(count);
                 .forEach(System.out::println);
 ```
 
+### Limit
 
+```java
+    //limit()
+        long count = Arrays.asList(colors).stream()
+                .limit(4)
+                .count();
+        System.out.println(count);
+
+        Stream.of(colors)
+                .limit(5)
+                .forEach(System.out::println);
+```

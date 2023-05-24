@@ -330,3 +330,35 @@ flatMap(user->user.getColors.stream().sorted().limit(2))
         OptionalDouble avgIntStream = IntStream.of(14, 35, 36, 3, 21, 1).average();
         avgIntStream.ifPresent(System.out::println);
 ```
+
+### Min
+```java
+
+//min method - Comparator
+//example1
+        Optional<User> mins = Arrays.asList(
+        new User("Tony", 45, Arrays.asList("Red", "Green")),
+        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
+        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
+        new User("Claire", 37, Arrays.asList("White", "Black")),
+        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
+        ).stream()
+        .min((value1, value2) -> value1.getColors().size() < value2.getColors().size() ? -1 :
+        value1.getColors().size() > value2.getColors().size() ? 1 : 0);
+
+        mins.ifPresent(value -> System.out.println(value.getFirstname()));
+        //example2
+        Optional<User> min2 = Arrays.asList(
+        new User("Tony", 45, Arrays.asList("Red", "Green")),
+        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
+        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
+        new User("Claire", 37, Arrays.asList("White", "Black")),
+        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
+        ).stream()
+        .min(Comparator.comparing(User::getAge));
+        min2.ifPresent(user -> System.out.println(user.getFirstname()));
+        //example3
+        OptionalInt optionalInt = IntStream.of(1, 3, 51, 2, 16).min();
+        optionalInt.ifPresent(System.out::println);
+
+```

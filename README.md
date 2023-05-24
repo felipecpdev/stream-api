@@ -278,3 +278,20 @@ class Vehicle{
         System.out.println(intStream.summaryStatistics());
 ```
 
+### flatMap
+
+```java
+//flatMap
+        Arrays.asList(
+                        new User("Tony", 45, Arrays.asList("Red", "Green")),
+                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
+                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
+                        new User("Claire", 37, Arrays.asList("White", "Black")),
+                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
+                ).stream()
+                .flatMap(user -> user.getColors().stream())
+                .filter(color -> color.length() > 4)
+                .distinct()
+                .forEach(System.out::println);
+```
+

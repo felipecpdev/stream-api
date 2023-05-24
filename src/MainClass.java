@@ -10,7 +10,7 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //Map - Functional Interface example 1
+        //Map to new Object - example 2
         Arrays.asList(
                         new User("Tony", 45, Arrays.asList("Red", "Green")),
                         new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
@@ -19,13 +19,22 @@ public class MainClass {
                         new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
                 ).stream()
                 .filter(user -> user.getAge() > 30)
-                .peek(username -> System.out.println("user over 30: " + username.getFirstname()))
-                .map(User::getFirstname)
-                .peek(username -> System.out.println("Mapped to String: " + username))
-                .distinct()
+                .map(user -> new Vehicle(user.getFirstname()))
                 .forEach(System.out::println);
 
+    }
+}
+class Vehicle{
+    private String owner;
+    Vehicle(String owner){
+        this.owner=owner;
+    }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "owner='" + owner + '\'' +
+                '}';
     }
 }
 

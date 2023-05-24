@@ -213,6 +213,21 @@ class User {
         this.colors = colors;
     }
 }
+
+class Vehicle{
+    private String owner;
+    Vehicle(String owner){
+        this.owner=owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "owner='" + owner + '\'' +
+                '}';
+    }
+}
+
 ```
 
 ### Map
@@ -231,5 +246,19 @@ class User {
                 .map(User::getFirstname)
                 .peek(username -> System.out.println("Mapped to String: " + username))
                 .distinct()
+                .forEach(System.out::println);
+```
+
+```java
+ //Map to new Object - example 2
+        Arrays.asList(
+                        new User("Tony", 45, Arrays.asList("Red", "Green")),
+                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
+                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
+                        new User("Claire", 37, Arrays.asList("White", "Black")),
+                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
+                ).stream()
+                .filter(user -> user.getAge() > 30)
+                .map(user -> new Vehicle(user.getFirstname()))
                 .forEach(System.out::println);
 ```

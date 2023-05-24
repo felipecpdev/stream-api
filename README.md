@@ -295,3 +295,20 @@ class Vehicle{
                 .forEach(System.out::println);
 ```
 
+### flatMapToDouble
+
+```java
+//flatMapToDouble
+        OptionalDouble average = Arrays.asList(
+                        new User("Tony", 45, Arrays.asList("Red", "Green")),
+                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
+                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
+                        new User("Claire", 37, Arrays.asList("White", "Black")),
+                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
+                ).stream()
+                .flatMapToDouble(user -> DoubleStream.of(user.getColors().stream()
+                        .mapToDouble(color -> color.length()).sum()))
+                .peek(value -> System.out.println("Val = " + value))
+                .average();
+        average.ifPresent(ave -> System.out.println("Avg is :" + ave));
+```

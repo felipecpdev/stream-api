@@ -417,3 +417,32 @@ flatMap(user->user.getColors.stream().sorted().limit(2))
                 .reduce(0, (subTotal, element) -> subTotal + element);
         System.out.println(reduce2);
 ```
+
+## Stream operations
+
+### of and concat method
+
+```
+//of method
+        //example 1
+        Stream.of(1,24,4,5,6,4,6).sorted().forEach(System.out::println);
+
+        //example 2
+        Stream<Integer> stream1= Stream.of(1,1,1);
+        Stream<Integer> stream2= Stream.of(1,2,3);
+//        Stream.concat(stream1,stream2).forEach(System.out::println);
+//
+//        Stream<>
+
+        Integer reduceConcat = Stream.concat(stream1, stream2)
+                .sorted()
+                .reduce(0, (integer1, integer2) -> integer1 + integer2);
+        System.out.println(reduceConcat);
+
+        List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
+        String result = letters
+                .stream()
+                .reduce("", (partialString, element) -> partialString + element);
+
+        System.out.println(result);
+```

@@ -10,39 +10,28 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //reduce - example 1
-        Integer reduce = Arrays.asList(1, 2, 3, 4, 5).stream()
-                .filter(integer -> integer > 2)
-                .reduce(0, (subTotal, element) -> subTotal + element);
-        System.out.println(reduce);
+        //of method
+        //example 1
+        Stream.of(1,24,4,5,6,4,6).sorted().forEach(System.out::println);
 
-        // example 2
-        Integer reduce1 = Arrays.asList(
-                        new User("Tony", 45, Arrays.asList("Red", "Green")),
-                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
-                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
-                        new User("Claire", 37, Arrays.asList("White", "Black")),
-                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
-                ).stream()
-                .filter(user -> user.getAge() > 24)
-                .reduce(0, (subTotal, element) -> subTotal + element.getAge(), Integer::sum);
+        //example 2
+        Stream<Integer> stream1= Stream.of(1,1,1);
+        Stream<Integer> stream2= Stream.of(1,2,3);
+//        Stream.concat(stream1,stream2).forEach(System.out::println);
+//
+//        Stream<>
 
-        System.out.println(reduce1);
+        Integer reduceConcat = Stream.concat(stream1, stream2)
+                .sorted()
+                .reduce(0, (integer1, integer2) -> integer1 + integer2);
+        System.out.println(reduceConcat);
 
-        //example 3
-        int reduce2 = Arrays.asList(
-                        new User("Tony", 45, Arrays.asList("Red", "Green")),
-                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
-                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
-                        new User("Claire", 37, Arrays.asList("White", "Black")),
-                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
-                ).stream()
-                .filter(user -> user.getAge() < 40)
-                .flatMapToInt(user -> user.getColors().stream()
-                        .mapToInt(color -> color.length()))
-                .peek(numero -> System.out.println("lenght: " + numero))
-                .reduce(0, (subTotal, element) -> subTotal + element);
-        System.out.println(reduce2);
+        List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
+        String result = letters
+                .stream()
+                .reduce("", (partialString, element) -> partialString + element);
+
+        System.out.println(result);
 
     }
 }

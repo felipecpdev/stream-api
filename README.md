@@ -316,3 +316,17 @@ ejemplos
 ```java
 flatMap(user->user.getColors.stream().sorted().limit(2))
 ```
+
+## Comparator
+
+### Max
+```java
+//max method - Comparator
+        OptionalInt maxa = Arrays.asList(14, 53, 53, 13, 12, 3).stream()
+                .mapToInt(value -> value)
+                .max();
+        maxa.ifPresent(System.out::println);
+
+        OptionalDouble avgIntStream = IntStream.of(14, 35, 36, 3, 21, 1).average();
+        avgIntStream.ifPresent(System.out::println);
+```

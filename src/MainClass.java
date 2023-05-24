@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.DoubleStream;
@@ -13,19 +10,14 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //flatMapToDouble
-        OptionalDouble average = Arrays.asList(
-                        new User("Tony", 45, Arrays.asList("Red", "Green")),
-                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
-                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
-                        new User("Claire", 37, Arrays.asList("White", "Black")),
-                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
-                ).stream()
-                .flatMapToDouble(user -> DoubleStream.of(user.getColors().stream()
-                        .mapToDouble(color -> color.length()).sum()))
-                .peek(value -> System.out.println("Val = " + value))
-                .average();
-        average.ifPresent(ave -> System.out.println("Avg is :" + ave));
+        //max method - Comparator
+        OptionalInt maxa = Arrays.asList(14, 53, 53, 13, 12, 3).stream()
+                .mapToInt(value -> value)
+                .max();
+        maxa.ifPresent(System.out::println);
+
+        OptionalDouble avgIntStream = IntStream.of(14, 35, 36, 3, 21, 1).average();
+        avgIntStream.ifPresent(System.out::println);
 
     }
 }

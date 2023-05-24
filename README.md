@@ -312,3 +312,7 @@ class Vehicle{
                 .average();
         average.ifPresent(ave -> System.out.println("Avg is :" + ave));
 ```
+ejemplos
+```java
+flatMap(user->user.getColors.stream().sorted().limit(2))
+```

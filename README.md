@@ -148,3 +148,28 @@ System.out.println(count);
                 .count();
         System.out.println(count);
 ```
+
+## The Consumer
+
+```java
+  //Consumer Functional Interface foreach
+        
+        // example 1
+        // Arrays.asList(colors).forEach(System.out::println);
+       
+        // example 2
+        AtomicInteger count = new AtomicInteger();
+        Arrays.asList(colors).stream()
+                .forEach(color -> count.addAndGet(color.length()));
+        System.out.println(count.get());
+
+        //example 3 peek
+        long count3 = Arrays.asList(colors).stream()
+                .filter(color -> color.length() > 5)
+                .peek(color -> System.out.println("Filter value = " + color))
+                .map(color -> color.toUpperCase())
+                .peek(color -> System.out.println("Mapped value = " + color))
+                .count();
+
+        System.out.println(count3);
+```

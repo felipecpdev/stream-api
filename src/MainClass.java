@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -8,15 +9,26 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //example
-        Predicate<String> containsCharA = color -> !color.contains("a");
-        Predicate<String> lessThanFiveChars = color -> color.length() > 5;
-        Predicate<String> greaterThanFiveCharsAndNotContainsCharA = lessThanFiveChars.and(containsCharA);
-        long count = Arrays.asList(colors).stream()
-                .filter(greaterThanFiveCharsAndNotContainsCharA)
-                .count();
-        System.out.println(count);
+        //Consumer Functional Interface foreach
 
+        // example 1
+        // Arrays.asList(colors).forEach(System.out::println);
+
+        // example 2
+        AtomicInteger count = new AtomicInteger();
+        Arrays.asList(colors).stream()
+                .forEach(color -> count.addAndGet(color.length()));
+        System.out.println(count.get());
+
+        //example 3 peek
+        long count3 = Arrays.asList(colors).stream()
+                .filter(color -> color.length() > 5)
+                .peek(color -> System.out.println("Filter value = " + color))
+                .map(color -> color.toUpperCase())
+                .peek(color -> System.out.println("Mapped value = " + color))
+                .count();
+
+        System.out.println(count3);
 
     }
 }

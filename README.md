@@ -499,3 +499,21 @@ flatMap(user->user.getColors.stream().sorted().limit(2))
 
         System.out.println(collect);
 ```
+
+### joining
+
+```java
+//joining
+        String collect = Arrays.asList(
+                        new User("Tony", 45, Arrays.asList("Red", "Green")),
+                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
+                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
+                        new User("Claire", 37, Arrays.asList("White", "Black")),
+                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
+                ).stream()
+                .filter(user -> user.getAge() < 30)
+                .map(user -> user.getFirstname())
+                .collect(Collectors.joining(", "));
+
+        System.out.println(collect);
+```

@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -10,28 +11,19 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //of method
-        //example 1
-        Stream.of(1,24,4,5,6,4,6).sorted().forEach(System.out::println);
+        //toList
 
-        //example 2
-        Stream<Integer> stream1= Stream.of(1,1,1);
-        Stream<Integer> stream2= Stream.of(1,2,3);
-//        Stream.concat(stream1,stream2).forEach(System.out::println);
-//
-//        Stream<>
+        List<User> collect = Arrays.asList(
+                        new User("Tony", 45, Arrays.asList("Red", "Green")),
+                        new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
+                        new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
+                        new User("Claire", 37, Arrays.asList("White", "Black")),
+                        new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
+                ).stream()
+                .filter(user -> user.getAge() < 30)
+                .collect(Collectors.toList());
 
-        Integer reduceConcat = Stream.concat(stream1, stream2)
-                .sorted()
-                .reduce(0, (integer1, integer2) -> integer1 + integer2);
-        System.out.println(reduceConcat);
-
-        List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
-        String result = letters
-                .stream()
-                .reduce("", (partialString, element) -> partialString + element);
-
-        System.out.println(result);
+        System.out.println(collect);
 
     }
 }
@@ -84,5 +76,14 @@ class User {
 
     public void setColors(List<String> colors) {
         this.colors = colors;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstname='" + firstname + '\'' +
+                ", age=" + age +
+                ", colors=" + colors +
+                '}';
     }
 }

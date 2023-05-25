@@ -11,8 +11,8 @@ public class MainClass {
 //    private static Predicate<String> isLenghtThreeChars= color-> color.length()==3;
 
     public static void main(String[] args) {
-        //summingInt o averagingInt;
-        Integer collect = Arrays.asList(
+        //groupingBy
+        Map<String, List<User>> collect = Arrays.asList(
                         new User("Tony", 45, Arrays.asList("Red", "Green")),
                         new User("Mark", 21, Arrays.asList("Blue", "Green", "White")),
                         new User("Ben", 19, Arrays.asList("Green", "Violet", "Purple", "Grey")),
@@ -20,9 +20,8 @@ public class MainClass {
                         new User("Sarah", 49, Arrays.asList("Red", "Green", "Blue"))
                 ).stream()
                 .filter(user -> user.getAge() < 30)
-                .collect(Collectors.summingInt(User::getAge));
-        //      .collect(Collectors.filtering(user -> user.getAge() > 24, Collectors.toList()));
-        System.out.println(collect);
+                .collect(Collectors.groupingBy(User::getFirstname));
+        System.out.println(collect.get("Mark"));
 
     }
 }
